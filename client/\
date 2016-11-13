@@ -1,0 +1,45 @@
+<head>
+  <title>moods</title>
+</head>
+<body class="baybu">
+</body>
+<template name="mood">
+	<button class="mood1 sad" value="0"></button>
+	<button class="mood1 fear" value="1"></button>
+	<button class="mood1 anger" value="2"></button>
+	<button class="mood1 disgust" value="3"></button>
+	<button class="mood1 happy" value="4"></button>
+</template>
+<template name="history">
+	<ul>
+	  {{ #each moods}}
+		{{>show}}
+	  {{/each}}
+	</ul> 
+</template>
+<template name="graph">
+	inder {{charts}}
+</template>
+<template name="show">
+	 <li><b>{{username}}</b> feeling <b>{{text}}</b> at {{createdAt}}</li>
+</template>
+<template name= "home">
+	
+{{#if currentUser}}
+<div class="login">{{>loginButtons}}</div>
+<div class="theme"></div>
+<div class="temp">{{>mood}}</div>
+<div class="btn">
+	<a href="/history"><button class="history">History</button> </a>
+	<a href="/graph"><button class="graph">Graph</button></a>
+</div>
+{{else}}
+	<div class="header">
+		<div class= "login">{{>loginButtons}} </div>
+	</div>
+	<div class="circle">
+	<p class="md">Dr. Mood</p>
+	<p class= "tag"> Know your BEST and WORST.</p>
+	</div> 
+{{/if}}
+</template>
